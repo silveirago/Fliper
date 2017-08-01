@@ -18,8 +18,8 @@ int buttonPState[NButtons] = {0}; // estado previo da porta digital
 
 /////////////////////////////////////////////
 
-const int NPots = 3; // *coloque aqui o numero de entradas analogicas utilizadas  
-const int pot[NPots] = {A0,A1,A2}; // *neste array coloque na ordem desejada os pinos das portas analogicas utilizadas
+const int NPots = 6; // *coloque aqui o numero de entradas analogicas utilizadas  
+const int pot[NPots] = {A0,A1,A2,A3,A4,A5}; // *neste array coloque na ordem desejada os pinos das portas analogicas utilizadas
 int potCState[NPots] = {0}; // estado atual da porta analogica
 int potPState[NPots] = {0}; // estado previo da porta analogica
 int potVar = 0; // variacao entre o valor do estado previo e o atual da porta analogica
