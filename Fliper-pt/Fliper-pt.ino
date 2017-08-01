@@ -51,7 +51,7 @@ void setup () {
   for (int i=0; i<NButtons; i++){
     pinMode(button[i], INPUT_PULLUP);
   }
- // pinMode(button[3], INPUT); //pino 13
+  pinMode(button[3], INPUT); //pino 13
   
   //Initialize Analog Pins as inputs
   for (int i=0; i<NPots; i++){
@@ -67,7 +67,7 @@ void loop () {
   for (int i=0; i<NButtons; i++) {
     buttonCState[i] = digitalRead(button[i]);
   }
-  buttonCState[3] = !buttonCState[12]; // Inverte o valor do pino 13
+  buttonCState[3] = !buttonCState[3]; // Inverte o valor do pino 13
 
   //Le o estado dos botoes e manda NoteOns para cada um que estiver ativo
   for (int i=0; i<NButtons; i++) {
