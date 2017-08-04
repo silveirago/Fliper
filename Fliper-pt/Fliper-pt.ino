@@ -81,7 +81,7 @@ void loop () {
       }
       else {
         MIDI.sendNoteOn(note+i, 0, midiCh); // use esta se quiser uma escala cromatica
-        // MIDI.sendNoteOn(note[i], 0, midiCh); // use esta se quiser uma escala personalizada
+        // MIDI.sendNoteOn(notes[i], 0, midiCh); // use esta se quiser uma escala personalizada
         buttonPState[i] = buttonCState[i];
       }
     }
