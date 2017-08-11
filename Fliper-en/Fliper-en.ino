@@ -4,10 +4,11 @@ MIDI_CREATE_DEFAULT_INSTANCE();
 
 /////////////////////////////////////////////
 // buttons
-const int NButtons = 3; //*
-const int buttonPin[NButtons] = {2,3,4};     //* the number of the pushbutton pin
+const int NButtons = 12; //*
+const int buttonPin[NButtons] = {10, 11, 12, 13, 6, 7, 8, 9, 2, 3, 4, 5};     //* the number of the pushbutton pins in the desired not order
 int buttonCState[NButtons] = {0};         // stores the button current value
 int buttonPState[NButtons] = {0};        // stores the button previous value
+byte pin13index = 3; // put the index of the pin 13 in the buttonPin[] if you are using it, if not, comment lines 68-70
 
 /////////////////////////////////////////////
 // debounce
@@ -17,8 +18,8 @@ unsigned long debounceDelay = 5;    //* the debounce time; increase if the outpu
 /////////////////////////////////////////////
 // potentiometers
 
-const int NPots = 2; //*
-int potPin[NPots] = {A0, A1}; //* Pin where the potentiometer is
+const int NPots = 6; //*
+int potPin[NPots] = {A0,A1,A2,A3,A4,A5}; //* Pin where the potentiometer is
 int potCState[NPots] = {0}; // Current state of the pot
 int potPState[NPots] = {0}; // Previous state of the pot
 int potVar = 0; // Difference between the current and previous state of the pot
@@ -45,6 +46,7 @@ void setup() {
     for (int i = 0; i < NButtons; i++) {
     pinMode(buttonPin[i], INPUT_PULLUP);
   }
+  pinMode(buttonPin[3], INPUT); //pin 13
 
 }
 
@@ -62,6 +64,12 @@ void buttons() {
     for (int i = 0; i < NButtons; i++) {
 
     buttonCState[i] = digitalRead(buttonPin[i]);
+
+    // Comment this if you are not using pin 13...
+    if(i == pin13index) {
+      buttonCState[i] = !buttonCState[i]; //inverts pin 13 because it has a pull down resistor instead of a pull up
+    }
+    // ...until here
 
     if ((millis() - lastDebounceTime[i]) > debounceDelay) {
 
